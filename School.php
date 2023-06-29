@@ -42,13 +42,13 @@ class School {
         $this->students = $students;
     }
     
-    public function addStudent(Student $student)
+    public function addStudent(Student $student) : array
     {
         array_push($this->students, $student);
         return $this->students;
     }
     
-    public function removeStudent(Student $student)
+    public function removeStudent(Student $student) : array
     {
         $index = array_search($student, $index);
         array_splice($this->students, $index);

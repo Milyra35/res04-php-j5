@@ -91,11 +91,11 @@ class Student {
     }
 }
 
-$student = new Student("Marie", "Richir", "marie.richir@gmail.com");
+/*$student = new Student("Marie", "Richir", "marie.richir@gmail.com");
 $student->addGrade(15);
 $student->addGrade(15);
 
 $student->getAverage();
-var_dump($student);
+var_dump($student);*/
 
 ?>

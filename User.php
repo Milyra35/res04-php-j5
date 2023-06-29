@@ -56,8 +56,8 @@ class User {
     }
 }
 
-$user = new User("Marie", "Richir", "marie.richir@gmail.com");
-$user->getFullName();
+/*$user = new User("Marie", "Richir", "marie.richir@gmail.com");
+$user->getFullName();*/
 
 ?>
 
