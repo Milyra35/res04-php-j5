@@ -35,13 +35,22 @@ function getRoleId(PDO $db, string $role)
     return $roleId['id'];
 };
 
+function addRole(PDO $db, User $user, string $role)
+{
+    $query = $db->prepare("INSERT INTO users_roles (user_id, role_id)
+                           VALUES (?, ?)");
+    $query->execute([getUserId($db, $user), getRoleId($db, $role)]);
+};
+
 require 'User.php';
 require 'Page.php';
 require 'PostCat.php';
 require 'Role.php';
 require 'Post.php';
 
-// $marie = new User("Milyra", "bonjour", "marie@gmail.com");
+$marie = new User("Milyra", "bonjour", "marie@gmail.com");
+$marie->addUser($db, $marie);
+$marie = addRole($db, $marie, "Admin");
 // $marie->removeUser($db, $marie);
 // echo "<pre>";
 // print_r($marie = getUserId($db, $marie));
