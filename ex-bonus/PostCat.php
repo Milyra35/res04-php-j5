@@ -55,16 +55,16 @@ class PostCat {
         $query->execute($parameters);
     }
     
-    public function getCategoryId(PDO $db, string $name)
-    {
-        $query = $db->prepare("SELECT post_categories.id FROM post_categories WHERE post_categories.name = :name");
-        $parameters = [
-            'name' => $name 
-        ];
-        $query->execute($parameters);
-        $categoryId = $query->fetch(PDO::FETCH_ASSOC);
-        return $categoryId['id'];
-    }
+    // public function getCategoryId(PDO $db, string $name)
+    // {
+    //     $query = $db->prepare("SELECT post_categories.id FROM post_categories WHERE post_categories.name = :name");
+    //     $parameters = [
+    //         'name' => $name 
+    //     ];
+    //     $query->execute($parameters);
+    //     $categoryId = $query->fetch(PDO::FETCH_ASSOC);
+    //     return $categoryId['id'];
+    // }
 }
 
 ?>

@@ -38,8 +38,6 @@ class Role {
     {
         $this->id = $id;
     }
-    
-    
 }
 
 ?>

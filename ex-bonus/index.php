@@ -14,20 +14,49 @@ $db = new PDO(
     $password
 );
 
+
+function getUserId(PDO $db, User $user)
+{
+    $query = $db->prepare("SELECT users.id FROM users WHERE users.username = :name");
+    $parameters = [
+        'name' => $user->getUsername()    
+    ];
+    $query->execute($parameters);
+    $userId = $query->fetch(PDO::FETCH_ASSOC);
+    return $userId['id'];
+};
+
+function getRoleId(PDO $db, string $role)
+{
+    $query = $db->prepare("SELECT roles.id FROM roles WHERE roles.name = :name");
+    $parameters = ['name' => $role];
+    $query->execute($parameters);
+    $roleId = $query->fetch(PDO::FETCH_ASSOC);
+    return $roleId['id'];
+};
+
 require 'User.php';
 require 'Page.php';
 require 'PostCat.php';
 require 'Role.php';
+require 'Post.php';
 
-$marie = new User("Milyra", "bonjour", "marie@gmail.com");
-// $marie->addUser($db, $marie);
-$marie->removeUser($db, $marie);
+// $marie = new User("Milyra", "bonjour", "marie@gmail.com");
+// $marie->removeUser($db, $marie);
+// echo "<pre>";
+// print_r($marie = getUserId($db, $marie));
+// echo "<pre>";
+// print_r(getRoleId($db, "Admin"));
+// $marie->removeUser($db, $marie);
 
-$newCategory = new PostCat("PC", "blabla");
-$newCategory->addCat($db, $newCategory);
-$newCategory->removeCat($db, $newCategory);
+// $newCategory = new PostCat("PC", "blabla");
+// $newCategory->addCat($db, $newCategory);
+// $newCategory->removeCat($db, $newCategory);
 
-print_r($newCategory->getCategoryId($db, "Gaming"));
+// $newCat = new Post("PC", "blabla");
+// $newCat->addPost($db, $newCat, "Gaming");
+// print_r($newCat->getCatId($db, "Gaming"));
+// $newCat->removePost($db, $newCat);
 
 
 ?>
