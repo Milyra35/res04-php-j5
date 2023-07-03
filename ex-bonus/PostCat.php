@@ -41,12 +41,29 @@ class PostCat {
     
     public function addCat(PDO $db, PostCat $cat)
     {
-        
+        $query = $db->prepare("INSERT INTO post_categories (name, description) 
+                       VALUES (?, ?)");
+        $query->execute([$cat->getName(), $cat->getDescription()]);
     }
     
     public function removeCat(PDO $db, PostCat $cat)
     {
-        
+        $query = $db->prepare("DELETE FROM post_categories WHERE post_categories.name = :name;");
+        $parameters = [
+            'name' => $cat->getName()
+        ];
+        $query->execute($parameters);
+    }
+    
+    public function getCategoryId(PDO $db, string $name)
+    {
+        $query = $db->prepare("SELECT post_categories.id FROM post_categories WHERE post_categories.name = :name");
+        $parameters = [
+            'name' => $name 
+        ];
+        $query->execute($parameters);
+        $categoryId = $query->fetch(PDO::FETCH_ASSOC);
+        return $categoryId['id'];
     }
 }
 

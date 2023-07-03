@@ -59,8 +59,7 @@ class User {
     
     public function removeUser(PDO $db, User $user) : void
     {
-        $query = $db->prepare("DELETE FROM users
-                               WHERE users.username = :email");
+        $query = $db->prepare("DELETE FROM users WHERE users.email = :email");
         $parameters = [
             'email' => $user->getEmail()   
         ];
