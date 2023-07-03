@@ -13,7 +13,7 @@ class Page {
         $this->title = $title;
         $this->content = $content;
         $this->route = $route;
-        $this->id = $id;
+        $this->id = -1;
     }
     
     public function getName() : string
